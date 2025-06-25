@@ -33,8 +33,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // デバッグ用
-        if (Input.GetKeyDown("left")) MoveToLeft();
-        if (Input.GetKeyDown("right")) MoveToRight();
+        if (Input.GetKeyDown(KeyCode.A)) MoveToLeft();
+        if (Input.GetKeyDown(KeyCode.D)) MoveToRight();
         if (Input.GetKeyDown("space")) Jump();
 
         // 徐々に加速しZ方向に常に前進させる
@@ -49,6 +49,7 @@ public class PlayerController : MonoBehaviour
         moveDirection.y -= gravity * Time.deltaTime;
 
         // 移動実行
+        // controller.Move(moveDirection * Time.deltaTime); // 前進するだけならこれでOK
         Vector3 globalDirection = transform.TransformDirection(moveDirection);
         controller.Move(globalDirection * Time.deltaTime);
 
