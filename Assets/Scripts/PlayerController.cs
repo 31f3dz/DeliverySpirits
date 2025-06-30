@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    const int MinLane = -2;
-    const int MaxLane = 2;
-    const float LaneWidth = 1.0f;
+    const int MinLane = -1;
+    const int MaxLane = 1;
+    const float LaneWidth = 3.0f;
 
     CharacterController controller;
     // Animator animator;
@@ -32,10 +32,13 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // デバッグ用
-        if (Input.GetKeyDown(KeyCode.A)) MoveToLeft();
-        if (Input.GetKeyDown(KeyCode.D)) MoveToRight();
-        if (Input.GetKeyDown("space")) Jump();
+        // ゲームステータスがplayingのときのみ左右に動かせる
+        if (GameController.gameState == GameState.playing)
+        {
+            if (Input.GetKeyDown(KeyCode.A)) MoveToLeft();
+            if (Input.GetKeyDown(KeyCode.D)) MoveToRight();
+            if (Input.GetKeyDown("space")) Jump();
+        }
 
         // 徐々に加速しZ方向に常に前進させる
         float acceleratedZ = moveDirection.z + (accelerationZ * Time.deltaTime);
@@ -80,6 +83,17 @@ public class PlayerController : MonoBehaviour
 
             // ジャンプトリガーを設定
             // animator.SetTrigger("Jump");
+        }
+    }
+
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.gameObject.CompareTag("Danger"))
+        {
+            controller.Move(new Vector3(0, 5, 0));
+            controller.transform.Rotate(Random.Range(-45, 45), Random.Range(-45, 45), Random.Range(-45, 45)); // 回転させる
+            GameController.gameState = GameState.gameover;
+            Destroy(gameObject, 3.0f);
         }
     }
 }

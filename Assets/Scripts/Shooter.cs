@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Shooter : MonoBehaviour
 {
-    public GameObject[] boxPrefabs;
+    public GameObject[] boxPrefabs; // 宅配物のプレハブを格納
     Transform player; // プレイヤーの位置情報
     Camera cam; // カメラの情報
 
@@ -29,6 +29,8 @@ public class Shooter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameController.gameState != GameState.playing) return;
+
         if (Input.GetMouseButtonDown(0)) // もしも左クリックが押されたら
         {
             if (startShoot) Shoot(); // フラグがONならシュートするメソッド

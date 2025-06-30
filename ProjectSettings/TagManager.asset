@@ -7,6 +7,7 @@ TagManager:
   - Box1
   - Box2
   - Box3
+  - Danger
   layers:
   - Default
   - TransparentFX
