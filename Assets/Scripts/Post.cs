@@ -20,6 +20,8 @@ public class Post : MonoBehaviour
 
     public PointUI pointUI; // ポイントを表示するUIコントローラークラス
 
+    public static int[] successCounts = { 0, 0, 0 };
+
     void OnTriggerEnter(Collider other)
     {
         if (!posted)
@@ -29,25 +31,26 @@ public class Post : MonoBehaviour
                 case PostType.box1:
                     if (other.gameObject.CompareTag("Box1"))
                         // 宅配完了の処理
-                        PostComp();
+                        PostComp(0);
                     break;
                 case PostType.box2:
                     if (other.gameObject.CompareTag("Box2"))
                         // 宅配完了の処理
-                        PostComp();
+                        PostComp(1);
                     break;
                 case PostType.box3:
                     if (other.gameObject.CompareTag("Box3"))
                         // 宅配完了の処理
-                        PostComp();
+                        PostComp(2);
                     break;
             }
         }
     }
 
-    void PostComp()
+    void PostComp(int boxNum)
     {
         posted = true;
+        successCounts[boxNum]++;
 
         // エフェクトそのものの座標より少し上に表示
         Vector3 showPos = transform.position + (Vector3.up * 1.5f);

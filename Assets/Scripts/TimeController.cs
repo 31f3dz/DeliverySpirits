@@ -34,8 +34,8 @@ public class TimeController : MonoBehaviour
         // もしも残時間が0になったとき何をするか？
         if (displayTime <= 0)
         {
-            isTimeOver = true;
             displayTime = 0;
+            isTimeOver = true;
         }
     }
 }

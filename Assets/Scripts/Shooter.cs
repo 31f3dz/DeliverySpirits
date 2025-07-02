@@ -14,6 +14,9 @@ public class Shooter : MonoBehaviour
 
     bool startShoot; // シュート可能かどうかのフラグ
 
+    // 各ボックスの投擲数
+    public static int[] shootCounts = { 0, 0, 0 };
+
     // Start is called before the first frame update
     void Start()
     {
@@ -65,7 +68,9 @@ public class Shooter : MonoBehaviour
                 cam.transform.forward.x * shootSpeed,
                 cam.transform.forward.y + upSpeed,
                 cam.transform.forward.z * shootSpeed
-                ), ForceMode.Impulse);
+            ), ForceMode.Impulse);
+
+            shootCounts[boxNum]++;
         }
     }
 }
