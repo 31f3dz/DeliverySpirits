@@ -87,15 +87,17 @@ public class UIController : MonoBehaviour
 
                     boxTexts[i].text = "Box" + (i+1) + " " + Post.successCounts[i] + " / " + Shooter.shootCounts[i] + " success rate " + successRate.ToString("F1") + "%";
                 }
-
-                resultPanel.SetActive(true);
-
-                // カーソルの復活
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-
-                GameController.gameState = GameState.end;
             }
+        }
+        else if (GameController.gameState == GameState.timeover)
+        {
+            resultPanel.SetActive(true);
+
+            // カーソルの復活
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
+            GameController.gameState = GameState.end;
         }
         else if (GameController.gameState == GameState.gameover)
         {

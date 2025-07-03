@@ -53,7 +53,7 @@ public class DangerGenerator : MonoBehaviour
         posX = rand * LaneWidth; // レーン番号とレーン幅で座標を決める
 
         // プレハブ化した危険車をジェネレーターのそのときのZの位置に危険車の向きそのままに生成する
-        Instantiate(dangerPrefab, new Vector3(posX, 1, transform.position.z), dangerPrefab.transform.rotation);
+        Instantiate(dangerPrefab, new Vector3(posX, 0.15f, transform.position.z), dangerPrefab.transform.rotation);
 
         // コルーチンの発動
         StartCoroutine(AlertText()); // 引数でコルーチンを指定

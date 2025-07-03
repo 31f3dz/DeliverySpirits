@@ -870,6 +870,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7941839996215914525, guid: 40da59d4062aca9448d9bf0a91716669, type: 3}
+      propertyPath: isRandom
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9109322654561817825, guid: 40da59d4062aca9448d9bf0a91716669, type: 3}
       propertyPath: m_Name
       value: DangerGenerator

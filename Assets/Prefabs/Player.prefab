@@ -148,10 +148,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravity: 9
-  speedZ: 8
+  speedZ: 5
   speedX: 6
   speedJump: 10
-  accelerationZ: 3
+  accelerationZ: 2
 --- !u!1 &386212140294527358
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,7 +407,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
